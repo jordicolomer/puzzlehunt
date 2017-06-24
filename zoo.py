@@ -31,11 +31,29 @@ def rule9(per):
     return per[6-1] == swan or per[6-1] == albatross or per[6-1] == implala
 
 carnivores=set([tiger, meetkat, lion, flamingo, dingo])
+rule10s=set([swan, dingo, flamingo])
 
 def rule10(per):
-    return true
+    for i in range(1, 7):
+        if per[i] in rule10s:
+            if per[i-1] in carnivores and per[i+1] in carnivores:
+                #print [names[x] for x in per], 'True'
+                return True
+    return False
+
+def rule4(per):
+    isrhebok = False
+    for i in range(1, 8):
+        if per[i] == rhebok:
+            isrhebok = True
+            if per[i-1] == lion or per[i-1] == albatross:
+                return False
+    return isrhebok
+
 
 for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
     if rule78(per): #0m15.612s 1 209 600
         if rule9(per): #0m11.412s 272 160
-            print [names[x] for x in per]
+            if rule10(per): # 0m10.891s 108560
+                if rule4(per): # 0m10.546s 31 938
+                    print [names[x] for x in per]
