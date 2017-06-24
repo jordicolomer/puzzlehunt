@@ -51,12 +51,11 @@ def rule4(per):
     return isrhebok
 
 
-
 def rule12(per):
     avians = (albatross, flamingo, swan)
     for i, a1 in enumerate(avians):
         for j, a2 in enumerate(avians):
-            if (j > i) and (a1 in per) and (a2 in per) and per.index(a1) > per.index(a1):
+            if (j > i) and (a1 in per) and (a2 in per) and per.index(a1) > per.index(a2):
                 return False
     return True
 
@@ -65,5 +64,5 @@ for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
     if rule78(per): #0m15.612s 1 209 600
         if rule9(per): #0m11.412s 272 160
             if rule10(per): # 0m10.891s 108560
-                if rule4(per): # 0m10.546s 31 938
+                if rule4(per) and rule12(per): # 0m10.546s 31 938
                     print([names[x] for x in per])
