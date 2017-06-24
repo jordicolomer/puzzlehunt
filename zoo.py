@@ -95,4 +95,5 @@ if __name__ == '__main__':
             if rule9(per): #0m11.412s 272 160
                 if rule10(per): # 0m10.891s 108560
                     if rule4(per) and rule12(per) and rule5(per) and rule3(per) and rule11(per): # 0m10.546s 31 938
-                        print([names[x] for x in per])
+                        out = [names[x] for x in set(ls)-set(per)]
+                        print([names[x] for x in per]+['<<>>']+out)
