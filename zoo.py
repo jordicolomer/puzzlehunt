@@ -61,8 +61,11 @@ def rule12(per):
 
 ungulates = (implala, elk, rhebok)
 ungulates = (implala, elk, warthog, rhebok)
+
+
 def rule5(per):
     return per[0] in ungulates and per[-1] in ungulates
+
 
 def rule3(per):
     if meetkat in per and warthog in per:
@@ -76,10 +79,20 @@ def rule3(per):
     return True
 
 
+def rule11(per):
+    if meetkat in per:
+        im = per.index(meetkat)
+        if tiger in per and im < per.index(tiger):
+            return False
+        if swan in per and im < per.index(swan):
+            return False
+    return True
+
+
 if __name__ == '__main__':
     for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
         if rule78(per): #0m15.612s 1 209 600
             if rule9(per): #0m11.412s 272 160
                 if rule10(per): # 0m10.891s 108560
-                    if rule4(per) and rule12(per) and rule5(per) and rule3(per): # 0m10.546s 31 938
+                    if rule4(per) and rule12(per) and rule5(per) and rule3(per) and rule11(per): # 0m10.546s 31 938
                         print([names[x] for x in per])

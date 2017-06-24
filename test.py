@@ -21,3 +21,11 @@ def test_rule3():
     assert rule3([warthog, swan]) == True
 
 
+def test_rule11():
+    assert rule11([tiger, swan]) == True
+    assert rule11([swan, tiger]) == True
+    assert rule11([]) == True
+    assert rule11([meetkat, swan]) == False
+    assert rule11([swan, tiger, meetkat]) == True
+    assert rule11([tiger, meetkat, swan]) == False
+
