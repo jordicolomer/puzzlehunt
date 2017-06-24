@@ -76,10 +76,10 @@ def rule3(per):
     return True
 
 
-for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
-    if rule78(per): #0m15.612s 1 209 600
-        if rule9(per): #0m11.412s 272 160
-            if rule10(per): # 0m10.891s 108560
-                if rule4(per) and rule12(per): # 0m10.546s 31 938
-                    if rule5(per):
+if __name__ == '__main__':
+    for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
+        if rule78(per): #0m15.612s 1 209 600
+            if rule9(per): #0m11.412s 272 160
+                if rule10(per): # 0m10.891s 108560
+                    if rule4(per) and rule12(per) and rule5(per) and rule3(per): # 0m10.546s 31 938
                         print([names[x] for x in per])
