@@ -64,6 +64,18 @@ ungulates = (implala, elk, warthog, rhebok)
 def rule5(per):
     return per[0] in ungulates and per[-1] in ungulates
 
+def rule3(per):
+    if meetkat in per and warthog in per:
+        if lion not in per:
+            return False
+        else:
+            im = per.index(meetkat)
+            iw = per.index(warthog)
+            il = per.index(lion)
+            return (im < il < iw) or (iw < il < im)
+    return True
+
+
 for per in itertools.permutations(ls, 8): #1m42.203s 19 958 400
     if rule78(per): #0m15.612s 1 209 600
         if rule9(per): #0m11.412s 272 160
